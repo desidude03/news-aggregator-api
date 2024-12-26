@@ -6,6 +6,8 @@ use Illuminate\Support\Facades\Schedule;
 
 
 Schedule::command('news:newsApi')->everyMinute(); //only for news api
+Schedule::command('news:nyTimes')->everyMinute(); //only for news api
+
 
 Artisan::command('inspire', function () {
     $this->comment(Inspiring::quote());
