@@ -59,7 +59,7 @@ class NewsAPICron extends Command
                             'url_to_image' => $articleData['urlToImage'] ?? null,
                             'published_at' => Carbon::parse($articleData['publishedAt']),
                             'content' => $articleData['content'] ?? null,
-                            'category' => $articleData['category'] ?? 'General', 
+                            'category_id' => $randomNumber = rand(1, 3),
 
                         ]
                     );

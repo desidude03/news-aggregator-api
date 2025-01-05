@@ -19,6 +19,11 @@ class Articles extends Model
         'published_at',
         'content',
         'source_name',
-        'category',
+        'category_id',
     ];
+
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
+    }
 }

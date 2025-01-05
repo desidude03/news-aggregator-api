@@ -62,6 +62,7 @@ class GuardianCron extends Command
                         'published_at' => Carbon::parse($articleData['webPublicationDate']),
                         'content' => strip_tags($articleData['fields']['body']), // Extract content and remove HTML tags
                         'source_name' => 'The Guardian',
+                        'category_id' => $randomNumber = rand(1, 3),
                     ]
                 );
             }
