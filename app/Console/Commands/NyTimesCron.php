@@ -33,14 +33,14 @@ class NyTimesCron extends Command
             return 1;
         }
 
-            $response = Http::get('https://api.nytimes.com/svc/topstories/v2/world.json?api-key=' . $apiKey);
+            $apiUrl = 'https://api.nytimes.com/svc/topstories/v2/world.json?api-key=' . $apiKey;
+            $response = Http::get($apiUrl);
 
             if ($response->successful()) {
                 $data = $response->json()['results'];
 
                 foreach ($data as $articleData) {
                     $article = Articles::updateOrCreate(
-                        // ['url': $articleData['url']],
                         [ 
                             'title' => $articleData['title'],
                             'author' => $articleData['author'] ?? null, // Handle potential missing author
@@ -54,9 +54,9 @@ class NyTimesCron extends Command
                     );
                 }
 
-                $this->info('Articles fetched and updated successfully.');
+                $this->info('Articles fetched and updated successfully.'.$apiUrl);
             } else {
-                $this->error('Failed to fetch articles from the New York Times API.');
+                $this->error('Failed to fetch articles from the New York Times API.'.$apiUrl);
             }
 
         return 0;

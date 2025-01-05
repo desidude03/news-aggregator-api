@@ -19,5 +19,6 @@ class Articles extends Model
         'published_at',
         'content',
         'source_name',
+        'category',
     ];
 }
