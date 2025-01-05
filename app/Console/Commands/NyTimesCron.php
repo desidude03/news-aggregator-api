@@ -50,7 +50,7 @@ class NyTimesCron extends Command
                             'published_at' => $articleData['published_date'],
                             'content' => $articleData['abstract'], // You might need to adjust based on API response
                             'source_name' => 'New York Times', 
-                            'category_id' => $randomNumber = rand(1, 3),
+                            'category_id' => rand(1, 6),
                         ]
                     );
                 }

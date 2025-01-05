@@ -48,17 +48,17 @@ class UserController extends BaseController
                 $query->whereIn('source_name', $preferences->sources);
             }
 
-            // if ($preferences->categories) {
-            //     $query->whereHas('category', function ($q) use ($preferences) {
-            //         $q->whereIn('name', $preferences->categories);
-            //     });
-            // }
+            if ($preferences->categories) {
+                $query->whereHas('category', function ($q) use ($preferences) {
+                    $q->whereIn('name', $preferences->categories);
+                });
+            }
 
-            // if ($preferences->authors) {
-            //     $query->whereHas('author', function ($q) use ($preferences) {
-            //         $q->whereIn('name', $preferences->authors);
-            //     });
-            // }
+            if ($preferences->authors) {
+                $query->whereHas('author', function ($q) use ($preferences) {
+                    $q->whereIn('name', $preferences->authors);
+                });
+            }
         }
 
         $articles = $query->latest()->take(10)->get();

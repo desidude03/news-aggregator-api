@@ -38,11 +38,11 @@ class ArticlesController extends BaseController
             $query->whereDate('published_at', '<=', $endDate);
         }
 
-        // if ($category) {
-        //     $query->whereHas('category', function ($q) use ($category) {
-        //         $q->where('name', $category);
-        //     });
-        // }
+        if ($category) {
+            $query->whereHas('category', function ($q) use ($category) {
+                $q->where('name', $category);
+            });
+        }
 
         if ($source) {
             $query->where('source_name', $source);
@@ -50,7 +50,11 @@ class ArticlesController extends BaseController
 
         $articles = $query->paginate($perPage, ['*'], 'page', $page);
 
-        return response()->json($articles);
+        $response = $articles->toArray();
+        unset($response['links']); // Remove 'links'
+
+        return response()->json($response);
+
     }
 
     /**
@@ -60,24 +64,25 @@ class ArticlesController extends BaseController
     {
         //
     }
-
+    
     /**
      * Store a newly created resource in storage.
      */
-    public function store($id)
+    public function store(Articles $articles)
+    {
+        //
+    }
+
+    /**
+     * Display the specified resource.
+     */
+    public function show($id)
     {
         $article = Articles::findOrFail($id);
 
         return response()->json($article);
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(Articles $articles)
-    {
-        //
-    }
 
     /**
      * Show the form for editing the specified resource.
