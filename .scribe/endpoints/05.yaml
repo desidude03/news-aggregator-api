@@ -1,0 +1,66 @@
+name: 'Personalized Feed'
+description: ''
+endpoints:
+  -
+    httpMethods:
+      - GET
+    uri: api/users/feed
+    metadata:
+      groupName: 'Personalized Feed'
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Get the personalized feed of articles based on user preferences.'
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Authorization: 'string The Bearer token used for authentication. Example: Bearer <token>'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+            "data": [
+              {
+                "id": 1,
+                "title": "Article Title",
+                "content": "Article content here.",
+                "published_at": "2024-01-01T00:00:00Z",
+                "source_name": "TechCrunch",
+                "category": {
+                  "name": "Technology"
+                },
+                "author": {
+                  "name": "John Doe"
+                }
+              }
+            ]
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 404
+        content: |-
+          {
+            "message": "No personalized feed available"
+          }
+        headers: []
+        description: ''
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []

@@ -13,6 +13,43 @@ class ArticlesController extends BaseController
     /**
      * Display a listing of the resource.
      */
+
+     /**
+     * @group Articles
+     *
+     * Display a listing of the resource.
+     *
+     * @queryParam per_page int The number of results per page. Defaults to 10. Example: 10
+     * @queryParam page int The page number. Defaults to 1. Example: 1
+     * @queryParam keyword string Search keyword for title or content. Example: Sport
+     * @queryParam start_date string The start date for filtering articles. Format: YYYY-MM-DD. Example: 2024-01-01
+     * @queryParam end_date string The end date for filtering articles. Format: YYYY-MM-DD. Example: 2024-12-31
+     * @queryParam category string The category name to filter articles by. Example: Technology
+     * @queryParam source string The source name to filter articles by. Example: TechCrunch
+     *
+     * @header Authorization string The Bearer token used for authentication. Example: Bearer <your token>
+     * 
+     * @response 200 {
+     *   "data": [
+     *     {
+     *       "id": 1,
+     *       "title": "Article Title",
+     *       "content": "Article content here.",
+     *       "published_at": "2024-01-01T00:00:00Z",
+     *       "source_name": "TechCrunch",
+     *       "category": {
+     *         "name": "Technology"
+     *       }
+     *     }
+     *   ],
+     *   "meta": {
+     *     "total": 100,
+     *     "per_page": 10,
+     *     "current_page": 1,
+     *     "last_page": 10
+     *   }
+     * }
+     */
     public function index(Request $request)
     {
         $perPage = $request->query('per_page', 10); 
@@ -75,6 +112,29 @@ class ArticlesController extends BaseController
 
     /**
      * Display the specified resource.
+     */
+
+    /**
+     * @group Articles
+     *
+     * Display the specified resource.
+     *
+     * @urlParam id int The ID of the article. Example: 1
+     *
+     * @response 200 {
+     *   "id": 1,
+     *   "title": "Article Title",
+     *   "content": "Article content here.",
+     *   "published_at": "2024-01-01T00:00:00Z",
+     *   "source_name": "TechCrunch",
+     *   "category": {
+     *     "name": "Technology"
+     *   }
+     * }
+     * 
+     * @response 404 {
+     *   "message": "Resource not found"
+     * }
      */
     public function show($id)
     {
