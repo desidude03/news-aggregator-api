@@ -31,11 +31,29 @@ Run the database migrations (**Set the database connection in .env before migrat
 
     php artisan migrate
 
+Run the database seeders
+
+    php artisan db:seed
+
 Start the local development server
 
     php artisan serve
 
 You can now access the server at http://localhost:8000
+
+fetch and store articles from NewsAPI (**Set API key in .env as NEWSAPI_API_KEY before fetching or running cron**)
+
+    php artisan news:newsApi
+
+fetch and store articles from New York Times (**Set API key in .env as NYTIMES_API_KEY before fetching or running cron**)
+
+    php artisan news:nyTimes
+
+fetch and store articles from The Guardian (**Set API key in .env as GUARDIAN_API_KEY before fetching or running cron**)
+
+    php artisan news:guardian
+
+You can now access the API Docs at http://127.0.0.1:8000/docs
 
 Run Test cases
 
