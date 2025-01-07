@@ -55,6 +55,34 @@ fetch and store articles from The Guardian (**Set API key in .env as GUARDIAN_AP
 
 You can now access the API Docs at http://127.0.0.1:8000/docs
 
+Running the Application on Docker
+
+Start the Docker Containers: Use Sail to start the application
+
+    ./vendor/bin/sail up -d
+
+Run Database Migrations: Apply the database migrations
+
+    ./vendor/bin/sail artisan migrate
+
+Access the Application: Once the containers are running, the application will be accessible at
+
+    http://localhost:8000
+
+To stop the application, use:
+
+    ./vendor/bin/sail down
+
+Environment Variables Ensure the .env file is properly set up with the following database values
+
+    DB_CONNECTION=mysql
+    DB_HOST=mysql
+    DB_PORT=3306
+    DB_DATABASE=<your_database_name>
+    DB_USERNAME=sail
+    DB_PASSWORD=password
+
+
 Run Test cases
 
     php artisan test
