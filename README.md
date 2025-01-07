@@ -55,7 +55,7 @@ fetch and store articles from The Guardian (**Set API key in .env as GUARDIAN_AP
 
 You can now access the API Docs at http://127.0.0.1:8000/docs
 
-Running the Application on Docker
+**Running the Application on Docker**
 
 Start the Docker Containers: Use Sail to start the application
 
